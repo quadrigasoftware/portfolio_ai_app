@@ -1,0 +1,16 @@
+> Task :type_safe_shared:server_core:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :server:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :server:processResources UP-TO-DATE
+> Task :type_safe_shared:server_core:processResources NO-SOURCE
+> Task :type_safe_shared:server_core:compileKotlin
+> Task :type_safe_shared:server_core:compileJava NO-SOURCE
+> Task :type_safe_shared:server_core:classes UP-TO-DATE
+> Task :type_safe_shared:server_core:jar
+> Task :server:compileKotlin
+> Task :server:compileJava NO-SOURCE
+> Task :server:classes UP-TO-DATE
+
+> Task :server:run
+2026-03-04 16:07:36.382 [main] INFO  Application - Autoreload is disabled because the development mode is off.
+2026-03-04 16:07:36.497 [main] INFO  Application - Application started in 0.192 seconds.
+2026-03-04 16:07:36.564 [DefaultDispatcher-worker-1] INFO  Application - Responding at http://0.0.0.0:8080

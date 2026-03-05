@@ -2,6 +2,7 @@
 
 package com.quadrigasoftware.portfolio_ai
 
+import com.quadrigasoftware.configureCoreSecurity
 import io.ktor.server.application.*
 import io.ktor.server.auth.*
 import io.ktor.server.response.*
@@ -9,6 +10,7 @@ import io.ktor.server.routing.*
 import io.ktor.util.*
 
 fun Application.configureSecurity() {
+    configureCoreSecurity()
     authentication {
         val myRealm = "MyRealm"
         val usersInMyRealmToHA1: Map<String, ByteArray> = mapOf(

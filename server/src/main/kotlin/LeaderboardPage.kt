@@ -1,6 +1,9 @@
 package com.quadrigasoftware.portfolio_ai
 
 
+import com.quadrigasoftware.MySession
+import com.quadrigasoftware.headerStyles
+import com.quadrigasoftware.loginStatusHeader
 import io.ktor.htmx.html.*
 import io.ktor.utils.io.*
 import kotlinx.html.*
@@ -9,14 +12,21 @@ import kotlin.io.path.exists
 import kotlin.io.path.useLines
 import kotlin.random.Random
 
-fun HTML.leaderboardPage(random: Random) {
+fun HTML.leaderboardPage(random: Random, session: MySession? = null) {
     head {
         @Suppress("SpellCheckingInspection")
         title("HTMX Example")
+        headerStyles()
         script(src = "/web.js") {}
         link(rel = "stylesheet", href = "/leaderboard.css")
     }
     body {
+        loginStatusHeader(session) {
+            a(href = "/", classes = "ts-menu-item") { +"Leaderboard" }
+            a(href = "/testing-123", classes = "ts-menu-item") { +"Testing Page" }
+            div("ts-menu-item") { +"Feature A" }
+            div("ts-menu-item") { +"Feature B" }
+        }
         h1 {
             +"Leaderboard"
         }
@@ -95,4 +105,3 @@ data class Contestant(
     val alias: String,
     val score: Int,
 )
-

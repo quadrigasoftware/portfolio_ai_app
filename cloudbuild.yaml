@@ -1,0 +1,31 @@
+steps:
+  # 1. Clone the public shared library dependency
+  - name: 'gcr.io/cloud-builders/git'
+    args: ['clone', 'https://github.com/quadrigasoftware/type_safe_shared.git', '../type_safe_shared']
+
+  # 2. Build the Docker image
+  # We run with context '..' so Docker can see both sibling directories
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/portfolio-ai-app', '-f', 'portfolio_ai_app/Dockerfile', '..']
+
+  # 3. Push the image to Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/portfolio-ai-app']
+
+  # 4. Deploy to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - 'portfolio-ai-app'
+      - '--image'
+      - 'gcr.io/$PROJECT_ID/portfolio-ai-app'
+      - '--region'
+      - 'us-central1'
+      - '--platform'
+      - 'managed'
+      - '--allow-unauthenticated'
+
+images:
+  - 'gcr.io/$PROJECT_ID/portfolio-ai-app'

@@ -7,5 +7,11 @@ dependencyResolutionManagement {
     }
 }
 
+includeBuild("../type_safe_shared") {
+    dependencySubstitution {
+        substitute(module("com.quadrigasoftware.shared:server_core")).using(project(":server_core"))
+    }
+}
+
 include(":server")
 include(":web")

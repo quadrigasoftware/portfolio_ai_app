@@ -33,28 +33,16 @@ kotlin {
 }
 
 dependencies {
-    // 1. Define the file path
-    val sharedJar = file("libs/server_core.jar")
-
-    // 2. Explicitly check if it exists
-    if (!sharedJar.exists()) {
-        throw GradleException("\n\n❌ SHARED JAR NOT FOUND at: ${sharedJar.absolutePath}\n" +
-                "Please run './gradlew :shared-core:syncSharedLib' in the Public Repo first.\n")
-    }
-    implementation(files(sharedJar))
-
-    implementation("io.ktor:ktor-server-core")
+    implementation("com.quadrigasoftware.shared:server_core")
+    implementation("io.ktor:ktor-server-netty")
     implementation("io.ktor:ktor-server-auth")
-    implementation("io.ktor:ktor-server-host-common")
     implementation("io.ktor:ktor-server-status-pages")
     implementation("io.ktor:ktor-server-content-negotiation")
     implementation("io.ktor:ktor-serialization-kotlinx-json")
     implementation("io.ktor:ktor-server-html-builder")
-    implementation("org.jetbrains.kotlinx:kotlinx-html:$kotlinx_html_version")
-    implementation("org.jetbrains.kotlin-wrappers:kotlin-css-jvm:2025.6.4")
-    implementation("io.ktor:ktor-server-htmx")
-    implementation("io.ktor:ktor-htmx-html")
-    implementation("io.ktor:ktor-server-netty")
+    implementation("org.jetbrains.kotlin-wrappers:kotlin-css:1.0.0-pre.724")
+    implementation("io.ktor:ktor-server-htmx:3.4.0")
+    implementation("io.ktor:ktor-htmx-html:3.4.0")
     implementation("ch.qos.logback:logback-classic:$logback_version")
     implementation("io.ktor:ktor-server-config-yaml")
     testImplementation("io.ktor:ktor-server-test-host")
