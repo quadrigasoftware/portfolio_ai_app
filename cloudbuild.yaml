@@ -26,6 +26,7 @@ steps:
       - '--platform'
       - 'managed'
       - '--allow-unauthenticated'
+      - '--update-secrets=SESSION_SECRET=SESSION_SECRET:latest,GOOGLE_CLIENT_ID=GOOGLE_CLIENT_ID:latest,GOOGLE_CLIENT_SECRET=GOOGLE_CLIENT_SECRET:latest,ENTRA_CLIENT_ID=ENTRA_CLIENT_ID:latest,ENTRA_CLIENT_SECRET=ENTRA_CLIENT_SECRET:latest,OKTA_CLIENT_ID=OKTA_CLIENT_ID:latest,OKTA_CLIENT_SECRET=OKTA_CLIENT_SECRET:latest,OKTA_DOMAIN=OKTA_DOMAIN:latest'
 
 images:
   - 'gcr.io/$PROJECT_ID/portfolio-ai-app'
