@@ -1,7 +1,7 @@
 package com.quadrigasoftware.portfolio_ai
 
-import io.github.cdimascio.dotenv.dotenv
 import com.quadrigasoftware.configServerCore
+import io.github.cdimascio.dotenv.dotenv
 import io.ktor.server.application.*
 
 fun main(args: Array<String>) {
