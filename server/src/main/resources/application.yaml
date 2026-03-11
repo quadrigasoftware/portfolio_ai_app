@@ -7,11 +7,12 @@ ktor:
 
 auth:
   session:
-    secret: ${SESSION_SECRET}
+    secret: ${SESSION_SECRET:-00112233445566778899aabbccddeeff}
   allowList:
     emails:
       - "charles@quadrigasoftware.com"
       - "aanya.iyer@quadrigasoftware.com"
+      - "amina.el-amin@quadrigasoftware.com"
   #    domains:
   #      - "quadrigasoftware.com"
   providers:
@@ -20,6 +21,11 @@ auth:
       clientSecret: ${GOOGLE_CLIENT_SECRET:-}
       authorizeUrl: "https://accounts.google.com/o/oauth2/auth"
       accessTokenUrl: "https://accounts.google.com/o/oauth2/token"
+      scopes:
+        - "openid"
+        - "profile"
+        - "email"
+        - "https://www.googleapis.com/auth/admin.directory.user.readonly"
       extraAuthParameters:
         prompt: "select_account"
     entra:
@@ -32,3 +38,5 @@ auth:
       clientSecret: ${OKTA_CLIENT_SECRET:-}
       authorizeUrl: "https://${OKTA_DOMAIN:-}/oauth2/default/v1/authorize"
       accessTokenUrl: "https://${OKTA_DOMAIN:-}/oauth2/default/v1/token"
+    mock:
+      enabled: true
