@@ -1,6 +1,7 @@
 package com.quadrigasoftware.portfolio_ai
 
 import com.quadrigasoftware.configServerCore
+import com.quadrigasoftware.configureCoreStatusPages
 import io.github.cdimascio.dotenv.dotenv
 import io.ktor.server.application.*
 
@@ -26,4 +27,5 @@ fun Application.module() {
     configureRouting()
 
     configServerCore()
+    configureCoreStatusPages()
 }
